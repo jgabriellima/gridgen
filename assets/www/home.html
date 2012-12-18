@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, 
+              initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.mobile-1.2.0.min.js"></script>
+        <script type="text/javascript" src="js/mustache.js"></script>
+        <script type="text/javascript" src="cordova-2.2.0.js"></script>
+        <script>
+            var $ = $.noConflict();
+        </script>
+    </head>
+    <body>
+        <!-- Tela 00 - screen -->
+        <div data-role="page" id="page0">
+            <div data-theme="a" data-role="header">
+                <h3 class="evtname">
+                    Grid Gen
+                </h3>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-theme="c">
+                        <a href="#page1" data-transition="slide">
+                            Hora
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page5" onclick="GridGen.listaAllSlots();" data-transition="slide">
+                            Dias
+                        </a>
+                    </li>
+                    <li data-theme="c">
+                        <a href="#page4" data-transition="slide">
+                            Mapa
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Tela 01 - Dias -->
+        <div data-role="page" id="page1">
+            <div data-theme="a" data-role="header">
+                <a data-role="button" href="#page0" data-icon="back" data-iconpos="left" onclick="history.go(-2)" default="#page0">Voltar</a>
+                <h3 class="evtname">
+                    Grid Gen
+                </h3>
+            </div>
+            <div data-role="content">
+                <ul id="uldias" data-role="listview" data-divider-theme="b" data-inset="true" style="display: none">
+                    <li data-role="list-divider" role="heading">
+                        Dias
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- Tela 02 - Horarios -->
+        <div data-role="page" id="page2">
+            <div data-theme="a" data-role="header">
+                <a data-role="button" href="#page1" data-icon="back" data-iconpos="left" onclick="history.go(-2)" default="#page1">Voltar</a>
+                <h3 class="evtname">
+                    Grid Gen
+                </h3>
+            </div>
+            <div data-role="content">
+                <ul id="ulslots" data-role="listview" data-divider-theme="b" data-inset="true" style="display: none">
+                    <li data-role="list-divider" role="heading">
+                        Slots
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="page3">
+            <div data-theme="a" data-role="header">
+                <h3 class="evtname">Grid Gen</h3>
+                <a data-role="button" href="#page2" data-icon="back" data-iconpos="left" onclick="history.go(-2)" default="#page2">Voltar</a>
+            </div>
+            <div id="evento" data-role="content">
+                <h3 id="descricao-evento">
+                    Title: {{title}}
+                </h3>
+                <h3 id="descricao-evento">
+                    Descrição: {{description}}
+                </h3>
+                <h3 id="local-evento">
+                    Speaker: {{speaker}}
+                </h3>
+                <h3 id="local-evento">
+                    Local: {{location}}
+                </h3>
+                <h3 id="horario-evento">
+                    Horario:  {{begin}} - {{end}}
+                </h3>
+            </div>
+        </div>
+        <div data-role="page" id="page4">
+            <div data-theme="a" data-role="header">
+                <a data-role="button" href="#page0" data-icon="back" data-iconpos="left" onclick="history.go(-2)" default="#page0">Voltar</a>
+                <h3 class="evtname">
+                    Grid Gen
+                </h3>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true" >
+                    <li data-role="list-divider" role="heading">
+                        Mapa
+                    </li>
+                </ul>
+                <img src="img/mapa.jpg" style="width: 100%"/>
+            </div>
+
+        </div>
+        <div data-role="page" id="page5">
+            <div data-theme="a" data-role="header">
+                <a data-role="button" href="#page0" data-icon="back" data-iconpos="left" onclick="history.go(-2)" default="#page0">Voltar</a>
+                <h3 class="evtname">
+                    Grid Gen
+                </h3>
+            </div>
+            <div data-role="content">
+                <ul id="geralslots" data-role="listview" data-divider-theme="b" data-inset="true" style="display: none">
+
+                </ul>
+            </div>
+        </div>
+
+        <script id="uldiastemplate">
+            {{#dias}}
+                <li data-theme="c">
+                <a href="#page2" onclick="GridGen.listaSlots('{{date}}')" data-transition="slide">
+                {{date}}
+                </a>
+                </li>
+                {{/dias}}
+        </script>
+        <script id="ulslotstemplate">
+            {{#slots}}
+                <li data-theme="c">
+                <a href="#page3" onclick="GridGen.show({{id}},'#page2')" data-transition="slide">
+                {{begin}} - {{end}}
+                </a>
+                </li>
+                {{/slots}}
+        </script>
+        <script id="geralslotstemplate">
+            {{#slots}}
+                <li data-role="list-divider" role="heading">
+                {{date}}
+                </li>
+                {{#detalhes}}
+                <li data-theme="c">
+                <a href="#page3" onclick="GridGen.show({{id}},'#page5')" data-transition="slide">
+                {{begin}} - {{end}}
+                </a>
+                </li>
+                {{/detalhes}}
+            {{/slots}}
+        </script>
+        <script type="text/javascript">
+            var GridGen = {
+                db:null,
+                name:null,
+                template_dias:null,
+                template_slot:null,
+                template_evento:null,
+                template_geralslots:null,
+                dbSize:5 *1024 *1024,
+                sessions:null,
+            
+                init:function(){
+                    $(".evtname").html(localStorage.getItem('evtname'));
+                    try{
+                        GridGen.db = openDatabase('GradeBeta', '1.0', 'Grade Beta', GridGen.dbSize );
+                        GridGen.listaDias();
+                    }catch(e){
+                        console.log('init: '+e);
+                    }
+                },
+                listaDias:function(){
+                    try{
+                        GridGen.db.transaction(function (tx)
+                        {
+                            tx.executeSql('SELECT * FROM slots group by date', [], function (tx, results)
+                            {
+                                var len = results.rows.length, i; 
+                                var dias = new Array();
+                                for (i = 0; i < len; i++)
+                                {
+                                    dias.push(results.rows.item(i));
+                                }
+                                if(GridGen.template_dias==null){
+                                    GridGen.template_dias = $('#uldiastemplate').html();
+                                }
+                                console.log(GridGen.template_dias );
+                                var html = Mustache.to_html(GridGen.template_dias, {
+                                    "dias": dias
+                                });
+                                console.log(html);
+                                $("#uldias").append(html);
+                                $("#uldias").show();
+                            });
+                        }); 
+                    }catch(e){
+                        console.log('listaDias: '+e)
+                    }
+                },
+                listaSlots:function(Data){
+                    try{
+                        GridGen.db.transaction(function (tx)
+                        {
+                            tx.executeSql('SELECT * FROM slots WHERE date="'+Data+'"', [], function (tx, results)
+                            {
+                                var len = results.rows.length, i; 
+                                var slots = new Array();
+                                for (i = 0; i < len; i++)
+                                {
+                                    slots.push(results.rows.item(i));
+                                }
+                        
+                                if(GridGen.template_slot==null){
+                                    GridGen.template_slot = $('#ulslotstemplate').html();
+                                }
+                                var html = Mustache.to_html(GridGen.template_slot, {
+                                    "slots": slots
+                                });
+                                $("#ulslots").append(html);
+                                $("#ulslots").listview('refresh');
+                                $("#ulslots").show();
+                            });
+                        });
+                    }catch(e){
+                        console.log('listaSlots: '+e);
+                    }
+                },
+                listaAllSlots:function(){
+                    try{
+                        GridGen.db.transaction(function (tx)
+                        {
+                            var slots = new Array();
+                            tx.executeSql('SELECT * FROM slots', [], function (tx, results)
+                            {
+                                var len = results.rows.length, i; 
+                                for (i = 0; i < len; i++)
+                                {
+                                    slots.push(results.rows.item(i));
+                                }
+                                                                
+                                var dias = new Array();
+                                for (i = 0; i < slots.length; i++)
+                                {
+                                    if($.inArray(slots[i].date, dias)){
+                                        dias.push(slots[i].date);
+                                    }
+                                }
+                                var result = new Array();
+                                for (i = 0; i < dias.length; i++)
+                                {
+                                    var obj = {};
+                                    obj.date = dias[i];
+                                    obj.detalhes = new Array();
+                                                                    
+                                    for (j = 0; j < slots.length; j++)
+                                    {
+                                        if(slots[j].date == dias[i]){
+                                            obj.detalhes.push(slots[j]);
+                                        }
+                                    }
+                                    result.push(obj);
+                                }
+                                if(GridGen.template_geralslots==null){
+                                    GridGen.template_geralslots = $('#geralslotstemplate').html();
+                                }
+                                var html = Mustache.to_html(GridGen.template_geralslots,{'slots':result});
+                                $("#geralslots").html(html);
+                                $("#geralslots").listview('refresh');
+                                $("#geralslots").show();
+                            });
+                        });
+                    }catch(e){
+                        console.log('listaSlots: '+e);
+                    }
+                },
+                show:function(id,pageback){
+                    //                evento
+                    try{
+                        
+//                        $('a[data-icon="back"]').each(function(){
+//                            $(this).attr('href',pageback);
+//                            $(this).bind('click',function(){
+//                                $(this).attr('href',$(this).attr('default'));
+//                            });
+//                        });
+                        
+                        GridGen.db.transaction(function (tx)
+                        {
+                            tx.executeSql('SELECT * FROM slots WHERE id="'+id+'"', [], function (tx, results)
+                            {
+                                var len = results.rows.length, i; 
+                                var slots = new Array();
+                                for (i = 0; i < len; i++)
+                                {
+                                    if(GridGen.template_evento==null){
+                                        GridGen.template_evento = $('#evento').html();
+                                    }
+                                    var html = Mustache.to_html(GridGen.template_evento, results.rows.item(i));
+                                }
+                                $("#evento").html(html);
+                                $("#evento").show();
+                            });
+                        });
+                    }catch(e){
+                        console.log('listaSlots: '+e);
+                    }
+                },
+                InsertLine:function (Data, Hor, Descr, Sala){
+                    try{
+                        GridGen.db.transaction(function (tx)
+                        {
+                            tx.executeSql('INSERT INTO slots (date, slot, desc, room) VALUES (?, ?, ?, ?)', [Data, Hor, Descr, Sala]);
+                        });
+                    }catch(e)
+                    {
+                        console.log('InsertLine: '+e);
+                    }
+                },
+                FilterDate:function (Data){
+                    GridGen.db.transaction(function (tx){
+                        tx.executeSql('SELECT * FROM slots WHERE date=Data', [],
+                        function(tx, results){
+                        
+                        });
+                    });
+                },
+                //Seleciona por horario
+                FilterSlot:function (Hor){
+                    try{
+                        GridGen.db.transaction(function (tx)
+                        {
+                            tx.executeSql('SELECT * FROM slots WHERE slor=Hor', [],
+                            function(tx, results){
+
+                            });
+                        });
+                    }catch(e){
+                        console.log('FilterSlot: '+e);
+                    }
+                },
+                sync:function(){
+                    try{
+                        $.ajax({
+                            type: "GET",
+                            url: 'sample.xml',
+                            dataType: "xml",
+                            success: function(xml){
+                                var eventName,db;
+                                var date, title, description, location, begin, end;
+    
+                                var sessions = new Array();
+    
+                                $(xml).find('event').each(function(){
+                                    GridGen.name = $(this).attr('name');
+                                    $(".evtname").html(GridGen.name);
+                                    $(this).find('session').each(function(key,value){
+                                        title = $(this).find('title').text();
+                                        date = $(this).find('date').text();
+                                        description = $(this).find('description').text();
+                                        location = $(this).find('location').text();
+                                        begin = $(this).find('begin').text();
+                                        end = $(this).find('end').text();
+            
+                                        var session = {};
+            
+                                        session.title = title;
+                                        session.date = date;
+                                        session.description = description;
+                                        session.location = location;
+                                        session.begin = begin;
+                                        session.end = end;
+                                        sessions.push(session);
+                                    });
+                                });
+                                GridGen.sessions = sessions;
+                            }
+                        });
+                      
+                    }catch(e){
+                        console.log(e);
+                    }
+                },
+                createdb:function(){
+                             
+                    GridGen.db.transaction(function (tx)
+                    {
+                        $.each(GridGen.sessions,function(key,value){
+                            tx.executeSql('INSERT INTO slots (date, title , description , speaker , location , begin , end ) VALUES (?, ?, ?, ?,?,?,?)', 
+                            [value.date,value.title,value.description,value.speaker,value.location,value.begin,value.end]);
+                        });
+                    });
+
+                }
+            };
+        
+            $(document).ready(function(){ 
+                //                GridGen.sync();
+                GridGen.init();
+            });
+
+        </script>
+    </body>
+</html>

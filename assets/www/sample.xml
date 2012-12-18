@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<event name="Intel Software Day 2012" dateBegin="05/12/2012" dateEnd="05/12/2012" db="intelsoftwareday">
+    <session>
+        <date>05/12/2012</date>
+        <title>Registro Welcome Coffee</title>
+        <description>Credenciamento dos Participantes e Café de boas vindas</description>
+        <speaker>None</speaker>
+        <location>Auditório principal</location>
+        <begin>08:00</begin>
+        <end>09:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Abertura do evento - Keynote 1</title>
+        <description>Boas vindas aos participantes;Apresentação de Fernando Ferreira Costa (Reitor Unicamp);Apresentação Intel Software;Lançamento do Programa Acadêmico Intel;Apresentação do evento</description>
+        <speaker>Nuno Simões (Intel)</speaker>
+        <location>Auditório principal</location>
+        <begin>09:00</begin>
+        <end>10:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Palestra - Keynote 2</title>
+        <description>A indústria de software no Brasil</description>
+        <speaker>Rafael Henrique Rodrigues Moreira (MCTI)</speaker>
+        <location>Auditório principal</location>
+        <begin>10:00</begin>
+        <end>11:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Palestra - Keynote 3</title>
+        <description>O Papel da Intel e o Futuro da Tecnologia</description>
+        <speaker>Steve Long (Intel)</speaker>
+        <location>Auditório principal</location>
+        <begin>11:00</begin>
+        <end>11:30</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Palestra - Keynote 3</title>
+        <description>O Futuro da plataforma Microsoft</description>
+        <speaker> Paulo Iudicibus (Microsoft)</speaker>
+        <location>Auditório principal</location>
+        <begin>11:30</begin>
+        <end>12:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Almoço</title>
+        <description>Pausa para o almoço</description>
+        <speaker></speaker>
+        <location>Auditório principal</location>
+        <begin>12:00</begin>
+        <end>13:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Sessões Técnicas A</title>
+        <description> O papel da Intel no mundo da computação paralela </description>
+        <speaker>Ashish Gupta (Intel Corporation) </speaker>
+        <location>Anfiteatro 1</location>
+        <begin>13:30</begin>
+        <end>14:30</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Sessões Técnicas A</title>
+        <description>HTML5 Phone Gap </description>
+        <speaker>Jomar Silva (Intel Brasil)</speaker>
+        <location>Anfiteatro 2</location>
+        <begin>13:30</begin>
+        <end>14:30</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Sessões Técnicas A</title>
+        <description>Mobile, Tablet e Ultrabook™ – O que muda na vida do desenvolvedor? </description>
+        <speaker>George Silva (Intel Brasil)</speaker>
+        <location>Anfiteatro 3</location>
+        <begin>13:30</begin>
+        <end>14:30</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Sessões Técnicas A</title>
+        <description>Game Design - Jogos Digitais nas Três Telas</description>
+        <speaker>Christian Lykawka (Rockhead Games)</speaker>
+        <location>Sala 7</location>
+        <begin>13:30</begin>
+        <end>14:30</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Coffee Break</title>
+        <description>Pausa para o café</description>
+        <speaker></speaker>
+        <location>Auditório principal</location>
+        <begin>12:00</begin>
+        <end>13:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Sessões Técnicas B</title>
+        <description>Conceitos e técnicas de computação paralela: Vantagens e os pontos de atenção</description>
+        <speaker>Belinda Liviero (Intel Corporation) / Leo Borges (Intel Corporation)</speaker>
+        <location>Anfiteatro 1</location>
+        <begin>15:00</begin>
+        <end>16:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Sessões Técnicas B</title>
+        <description>Android NDK</description>
+        <speaker>George Silva (Intel Brasil) / Felipe Pedroso (Intel Brasil) </speaker>
+        <location>Anfiteatro 2</location>
+        <begin>15:00</begin>
+        <end>16:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Sessões Técnicas B</title>
+        <description>Desenvolvendo Apps para Win8</description>
+        <speaker>Caio Chaves Garcez (Microsoft Brasil) / Luciano Palma (Intel Brasil)</speaker>
+        <location>Anfiteatro 3</location>
+        <begin>15:00</begin>
+        <end>16:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Sessões Técnicas B</title>
+        <description>Produção de Games no Brasil</description>
+        <speaker>Fred Vasconcelos (Joystreet) / Mitikazu Lisboa (Hive)</speaker>
+        <location>Sala 7</location>
+        <begin>15:00</begin>
+        <end>16:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Encerramento do evento e premiações</title>
+        <description>Programa de estágio Intel Apresentação</description>
+        <speaker>Claudia Amador (Intel Brasil)</speaker>
+        <location>Auditório principal</location>
+        <begin>16:00</begin>
+        <end>16:30</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Encerramento do evento e premiações</title>
+        <description>Resultado do Hackathon, premiações e finalização.</description>
+        <speaker>Nuno Simões (Intel)</speaker>
+        <location>Auditório principal</location>
+        <begin>16:30</begin>
+        <end>17:00</end>
+    </session>
+    
+    <session>
+        <date>05/12/2012</date>
+        <title>Ultrabook™ Demo Day</title>
+        <description>Área de experimentação onde os participantes irão conhecer e trocar informações com alguns dos parceiros da Intel® que estarão apresentando seus Aplicativos nos novos Ultrabooks™ com capacidade de Touch e Sensores.</description>
+        <speaker></speaker>
+        <location></location>
+        <begin>09:00</begin>
+        <end>16:00</end>
+    </session>
+    
+    
+</event>
